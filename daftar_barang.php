@@ -1,6 +1,10 @@
 <?php
 // Turn off all error reporting
+session_start();
 error_reporting(0);
+if($_SESSION['username']== ''){
+  header('Location:index.php');
+}
 // include database connection file
 include_once("config.php");
 
@@ -40,6 +44,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM barang ORDER BY id ASC");
       </li>
       <li class="nav-item">
         <a class="nav-link" href="daftar_member.php">Benefit Member</a>
+      </li>
+      </li><li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a>
       </li>
     </ul>
     

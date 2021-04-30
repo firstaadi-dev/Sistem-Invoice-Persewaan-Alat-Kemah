@@ -1,9 +1,11 @@
 <?php
+session_start();
 // Turn off all error reporting
-error_reporting(0);
+//error_reporting(0);
 
 $nomorInvoice = $_GET['no'];
 $namaPelanggan = $_GET['name'];
+
 include_once("config.php");
 date_default_timezone_set('Asia/Jakarta');
 
@@ -17,7 +19,7 @@ $diskon = mysqli_query($mysqli, "SELECT diskon FROM memberbenefit WHERE nama='$n
 <h1 class="text-center">Invoice Pembayaran Pesanan</h2>
 <h2>Nama    : <?php echo $namaPelanggan; ?></h2>
 <h2>Tanggal : <?php echo date("Y-m-d H:i:s"); ?></h2>
-
+<h2>Kasir   : <?php echo $_SESSION['username']; ?></h2>
 <table class="table table-striped ">
         <thead class="thead-dark">
 

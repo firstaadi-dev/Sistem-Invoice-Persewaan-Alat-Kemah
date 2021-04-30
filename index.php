@@ -1,6 +1,7 @@
 <?php
   //Ambil data dari form login
     if(isset($_POST['Submit'])) {
+        session_start();
         $username = $_POST['username'];
         $password = $_POST['password'];
         $salted = $username."cienyaripassword".$password;
@@ -14,6 +15,7 @@
         $cek = mysqli_num_rows($result);
         
         if ($cek == 1){
+            $_SESSION['username']=$username;
             header('Location:order.php');
         }else{
             echo "User dan Password Salah";

@@ -1,6 +1,10 @@
 <?php
 // Turn off all error reporting
+session_start();
 error_reporting(0);
+if($_SESSION['username']== ''){
+  header('Location:index.php');
+}
 $nomorInvoice = $_GET['nomorInvoice'];
 $namaPelanggan = $_GET['name'];
 
@@ -47,6 +51,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM recordpesanan WHERE nomorInvoice=
       </li>
       <li class="nav-item">
         <a class="nav-link" href="daftar_member.php">Benefit Member</a>
+      </li><li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0",method="post">
